@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+</head>
+<style>    
+    div{
+        padding: 10px;
+        width: 400px;        
+    }    
+    #container{
+        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    body{
+        background-image: url(../res/back.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+</style>
+<body >
+    <div id="container">
+    <div id="thumbCnt-1">
+        <img id="thumb-1" style="width: 350px; height: 300px;" alt="thumbnail">
+        <button id="btn-1" style="display: none; transform: translateY(200px);">BUY</button>
+        <iframe id="iframe-1" width="350" style="display: none;" height="400" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+    </div>
+
+    <div id="thumbCnt-2">
+        <img id="thumb-2" style="width: 350px; height: 300px;" alt="thumbnail">
+        <button id="btn-2" style="display: none;">BUY</button>
+        <iframe id="iframe-2" width="350" style="display: none;" height="400" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+    </div>
+
+    <div>
+        <iframe width="350" style="display: block;" height="400" frameborder="0" src="https://www.youtube.com/embed/0_VerElEvvI"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    </div>    
+
+    <div>
+        <iframe width="350" style="display: block;" height="400" frameborder="0"
+            src="https://www.youtube.com/embed/Mar8f-UJcpA"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    </div>
+
+    <div>
+        <iframe width="350" style="display: block;" height="400" frameborder="0" 
+            src="https://www.youtube.com/embed/q5m-wLyaayA"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    </div>
+    
+    <div id="thumbCnt-3">
+        <img id="thumb-3" style="width: 350px; height: 300px;" alt="thumbnail">
+        <button id="btn-3" style="display: none;">BUY</button>
+        <iframe id="iframe-3" width="350" style="display: none;" height="400" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+    </div>
+    
+    <div id="thumbCnt-4">
+        <img id="thumb-4" style="width: 350px; height: 300px;" alt="thumbnail">
+        <button id="btn-4" style="display: none;">BUY</button>
+        <iframe id="iframe-4" width="350" style="display: none;" height="400" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+    </div>
+    
+    <div>
+        <iframe width="350" style="display: block;" height="400" frameborder="0"
+            src="https://www.youtube.com/embed/pkMzmKSQ6Wo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    </div>
+
+    </div>
+
+    <script>
+        const videos = [            
+            {thumbSrc: "../res/thumb-1.png", iframeSrc: "https://www.youtube.com/embed/R2dOpvrX0UM",thumbCntID: "#thumbCnt-1", thumbID: "#thumb-1", btnID: "#btn-1", iframeID: "#iframe-1"},
+            {thumbSrc: "../res/thumb-2.png", iframeSrc: "https://www.youtube.com/embed/tteTwqR8EyA",thumbCntID: "#thumbCnt-2", thumbID: "#thumb-2", btnID: "#btn-2", iframeID: "#iframe-2"},
+            {thumbSrc: "../res/thumb-3.png", iframeSrc: "https://www.youtube.com/embed/yqeajyG774w",thumbCntID: "#thumbCnt-3", thumbID: "#thumb-3", btnID: "#btn-3", iframeID: "#iframe-3"},
+            {thumbSrc: "../res/thumb-4.png", iframeSrc: "https://www.youtube.com/embed/dkmGBr-9SyI",thumbCntID: "#thumbCnt-4", thumbID: "#thumb-4", btnID: "#btn-4", iframeID: "#iframe-4"},
+        ]
+        videos.forEach((video) => {
+            document.querySelector(video.thumbID).src = video.thumbSrc;
+            document.querySelector(video.iframeID).src = video.iframeSrc;
+            document.querySelector(video.btnID).addEventListener('click', () => {
+                document.querySelector(video.thumbID).style = "display:none";
+                document.querySelector(video.iframeID).style = "display:block";
+                document.querySelector(video.btnID).remove();
+            })
+            document.querySelector(video.thumbCntID).addEventListener('mouseenter', () => {
+                console.log('hel')
+                document.querySelector(video.thumbID).src = "../res/download.png"
+            })
+            document.querySelector(video.thumbCntID).addEventListener('mouseleave', () => {
+                console.log('hel')
+                document.querySelector(video.thumbID).src = video.thumbSrc;
+                document.querySelector(video.btnID).style = "display:none";
+            })
+            document.querySelector(video.thumbID).addEventListener('click', () => {
+                document.querySelector(video.btnID).style = "display:block";
+            })
+        })        
+    </script>
+</body>
+</html>
